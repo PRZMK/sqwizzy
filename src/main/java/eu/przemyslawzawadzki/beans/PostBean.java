@@ -64,7 +64,7 @@ public class PostBean {
     }
 
     public List<PostDTO> getAllPosts() {
-        addInformation("wywołano");
+        
         return postDao.getAllPosts();
     }
 
@@ -82,8 +82,6 @@ public class PostBean {
 
     ;
      public void addComment() {
-         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "witajw add", ""));
-         System.out.println("hej add comment");
          commentDTO.setUserId((String) SessionBean.getSession().getAttribute("login"));
          postDao.addCommentToPost(commentDTO, post);
          commentDTO.setComment(null);

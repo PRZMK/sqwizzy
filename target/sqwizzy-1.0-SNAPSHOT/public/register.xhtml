@@ -14,7 +14,7 @@
             </ui:define>
 
             <ui:define name="content">
-                <div>
+                <div class="container">
                         <h:form role="form">
                             <div class="form-group">
                                 <h:outputLabel ><span class="glyphicon glyphicon-user"></span> Username</h:outputLabel>
@@ -37,8 +37,8 @@
                                 <h:inputText class="form-control" id="email" value="#{userBean.user.email}"></h:inputText>
                             </div>
                             
-                            <h:commandButton action="#{userBean.register()}" class="btn btn-success btn-block glyphicon glyphicon-off"
-                                             value="Login"></h:commandButton>
+                            <h:commandButton action="#{userBean.register()}" class="btn btn-info btn-block glyphicon glyphicon-off"
+                                             value="Register"></h:commandButton>
                         </h:form>
                     </div>
             </ui:define>

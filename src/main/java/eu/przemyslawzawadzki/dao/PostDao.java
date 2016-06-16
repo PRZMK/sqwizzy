@@ -36,11 +36,9 @@ public class PostDao {
         PostDTO post;
         FindIterable<Document> iterable = postCollection.find();
 
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "getall", ""));
         for (Document document : iterable) {
             post = new PostDTO();
 
-            //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, document.getString("post"), ""));
             post.setId(document.get("_id", ObjectId.class).toString());
             post.setPost(document.getString("post"));
             post.setDate(document.get("date", Date.class));
@@ -58,7 +56,6 @@ public class PostDao {
         FindIterable<Document> iterable;
         iterable = postCollection.find((eq("userid", userId)));
         CommentDTO commentDTO = null;
-//        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "witaj", ""));
         for (Document document : iterable) {
             post = new PostDTO();
 
@@ -93,7 +90,6 @@ public class PostDao {
         FindIterable<Document> iterable;
         iterable = postCollection.find((eq("_id", new ObjectId(postId))));
         CommentDTO commentDTO = null;
-//        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "witaj", ""));
         Document document = iterable.first();
         post = new PostDTO();
 
@@ -102,7 +98,6 @@ public class PostDao {
         post.setDate(document.get("date", Date.class));
         post.setLikes(document.get("likes", Integer.class));
         post.setUserId(document.getString("userid"));
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "witajbefor", ""));
         try {
 
             ArrayList<Document> comments = document.get("comment", ArrayList.class);

@@ -82,6 +82,10 @@
                             
                             <h:commandButton action="#{userBean.update()}" class="btn btn-success btn-block glyphicon glyphicon-off"
                                              value="Edit"></h:commandButton>
+                            <h:commandButton action="#{userBean.delete()}" class="btn btn-warning btn-block glyphicon glyphicon-off"
+                                             value="Delete account"></h:commandButton>
+                            <h:commandButton action="#{userBean.deleteWithPost()}" class="btn btn-danger btn-block glyphicon glyphicon-off"
+                                             value="Delete account with post"></h:commandButton>
                         </h:form>
                     </div>
         

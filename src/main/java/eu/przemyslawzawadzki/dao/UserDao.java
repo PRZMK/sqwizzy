@@ -13,6 +13,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
+import eu.przemyslawzawadzki.model.PostDTO;
 import eu.przemyslawzawadzki.model.UserDTO;
 import eu.przemyslawzawadzki.util.MongoConector;
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class UserDao {
                 .append("email", user.getEmail());
         userCollection.insertOne(document);
     }
+
     public UserDTO findByLogin(String id) {
         FindIterable<Document> iterable = userCollection.find(eq("_id", id));
         Document document = iterable.first();
@@ -64,11 +66,11 @@ public class UserDao {
         user.setName(document.getString("name"));
         user.setLastName(document.getString("lastname"));
         user.setEmail(document.getString("email"));
-       
+
         return user;
     }
-    
-    public void addUser(UserDTO user){
+
+    public void addUser(UserDTO user) {
         Document document;
         document = new Document("_id", user.getLogin())
                 .append("password", user.getPassword())
@@ -79,7 +81,7 @@ public class UserDao {
     }
 
     public void update(UserDTO user) {
-        
+
         userCollection.updateOne(new Document("_id", user.getLogin()),
                 new Document("$set", new Document("name", user.getName())
                         .append("password", user.getPassword())
@@ -88,8 +90,20 @@ public class UserDao {
 //        userCollection.updateOne(new Document("_id", user.getId()), new Document("$set", new Document("lastname", user.getLastName())));
 //        userCollection.updateOne(new Document("_id", user.getId()), new Document("$set", new Document("email", user.getEmail())));
     }
-    
- 
-    
+
+    public void delete(String login) {
+        userCollection.deleteOne(eq("_id", login));
+
+    }
+
+    public void deleteUserPost(String login) {
+        PostDao postDao = new PostDao();
+        List<PostDTO> list = postDao.getPosts(login);
+        for (PostDTO postDTO : list) {
+            postDao.delete(postDTO);
+        }
+
+    }
+
 
 }

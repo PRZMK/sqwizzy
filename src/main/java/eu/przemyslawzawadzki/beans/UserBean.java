@@ -98,6 +98,16 @@ public class UserBean {
         userDao.update(user);
     }
 
+    public void delete(){
+        userDao.delete((String) SessionBean.getSession().getAttribute("login"));
+        logout();
+    }
+    public void deleteWithPost(){
+        userDao.deleteUserPost((String) SessionBean.getSession().getAttribute("login"));
+        delete();
+        
+    }
+    
     public void logout() {
         HttpSession session = SessionBean.getSession();
         session.invalidate();
