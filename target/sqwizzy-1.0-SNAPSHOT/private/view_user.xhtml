@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./maintemplate.xhtml">
+
+
+            <ui:define name="nav">
+                <li><a href="index.xhtml">My Timeline</a></li>
+                <li><a href="timeline.xhtml">Timeline</a></li>
+            </ui:define>
+
+            <ui:define name="left">
+                <f:metadata>
+                    <f:viewParam name="id" value="#{userBean.user.login}" />
+                    <f:viewAction action="#{userBean.findUser()}" />
+                </f:metadata>
+
+                <div style="text-align: center" class="well" >
+
+
+                    <h2>#{userBean.user.login}</h2><br/>
+                    <p>#{userBean.user.name}</p><br/>
+                    <p>#{userBean.user.lastName}</p><br/>
+                    <p>#{userBean.user.email}</p><br/>
+
+
+                </div>
+            </ui:define>
+            <ui:define name="content">
+                <div class="panel-group">
+                    <f:metadata>
+                        <f:viewParam name="id" value="#{userBean.user.login}" />
+                        <f:viewAction action="#{userBean.findUser()}" />
+                    </f:metadata>
+
+                    <ui:repeat value="#{userBean.user.posts}" var = "post"  >
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+
+
+
+                                <div style="text-align: right"><span>#{post.date.toString()}</span></div>
+                                <div style="text-align: left">
+                                    <span style="font-size: 32px">
+                                        <h:form>
+                                            <h:link outcome="/private/view_user.xhtml?id=#{post.userId}" includeViewParams="true">
+                                                @#{post.userId}
+                                            </h:link>
+                                        </h:form>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="panel-body"><h3>#{post.post}</h3></div>
+                            <div class="panel-footer">
+                                
+                                <div> 
+                                    <h:form>
+                                        <h:link outcome="/private/post.xhtml?post=#{post.id}" includeViewParams="true">more..</h:link>
+                                        <!--<a href="/private/index.xhtml">Comments</a>-->
+                                    </h:form>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+
+
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

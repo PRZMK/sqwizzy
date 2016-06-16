@@ -1,0 +1,11 @@
+eu\przemyslawzawadzki\dao\UserDao.class
+eu\przemyslawzawadzki\beans\SessionBean.class
+eu\przemyslawzawadzki\model\CommentDTO.class
+eu\przemyslawzawadzki\model\PostDTO.class
+eu\przemyslawzawadzki\filter\AuthorizationFilter.class
+eu\przemyslawzawadzki\beans\UserBean.class
+eu\przemyslawzawadzki\util\MongoConector.class
+eu\przemyslawzawadzki\listener\AttributeListener.class
+eu\przemyslawzawadzki\beans\PostBean.class
+eu\przemyslawzawadzki\model\UserDTO.class
+eu\przemyslawzawadzki\dao\PostDao.class

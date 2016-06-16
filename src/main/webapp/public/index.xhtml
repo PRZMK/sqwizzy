@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./maintemplate.xhtml">
+
+        <ui:define name="nav">
+                <li class="active"><a href="index.xhtml">Main</a></li>
+                <li><a href="timeline.xhtml">Timeline</a></li>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="container">
+                    <div class=" jumbotron">
+                        <p style="font-family: arial, sans-serif;font-size: 500% ">Welcome in Sqwizzy</p>
+                        <p>Your place in the World</p>
+                    </div>
+                    <a href="#demo"  data-toggle="collapse">
+                        <img src="http://theartmad.com/wp-content/uploads/2015/04/Happy-People-Wallpapers-4.jpg"  class="img-responsive img-circle person" alt="Random Name" width="500" height="500"></img>
+                    </a>
+                    <div id="demo" class="collapse">
+                        <p>Guitarist and Lead Vocalist</p>
+                        <p>Loves long walks on the beach</p>
+                        <p>Member since 1988</p>
+                    </div>
+                 </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

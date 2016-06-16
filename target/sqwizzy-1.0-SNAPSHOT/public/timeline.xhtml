@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./maintemplate.xhtml">
+
+            <ui:define name="nav">
+                <li><a href="index.xhtml">Main</a></li>
+                <li class="active"><a href="timeline.xhtml">Timeline</a></li>
+            </ui:define>
+            <ui:define name="content">
+                <div class="panel-group container">
+                    <ui:repeat value="#{postBean.allPosts}" var = "post"  >
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+
+
+
+                                <div style="text-align: right"><span>#{post.date.toString()}</span></div>
+                                <div style="text-align: left">
+                                    <span style="font-size: 24px">
+                                       
+                                                @#{post.userId}
+                                           
+                                       
+                                    </span>
+                                </div>
+
+
+                            </div>
+                            <div class="panel-body"><p class="font-size: 21px">#{post.post}</p></div>
+                            
+                        </div>
+                    </ui:repeat>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
